@@ -1,0 +1,61 @@
+version: "3.6"
+
+services:
+  # api
+#   dk_omie:
+#     image: webdevops/php-nginx-dev:7.2
+#     restart: always
+#     container_name: omie
+#     networks:
+#       - internal
+#     working_dir: /var/www/app
+#     volumes:
+#       - ./:/var/www/app
+#     environment:
+#       - DB_CON=${DB_CON}
+#       - DB_PORT=${DB_PORT}
+#       - DB_HOST=${DB_HOST}
+#       # - DB_HOST=172.25.0.1 #dev
+#       - DB_USER=${DB_USER}
+#       - DB_PASSWORD=${DB_PASSWORD}
+#       - DB_DATABASE=${DB_DATABASE}
+#       - DB_SCHEMA=${DB_SCHEMA}
+#       - DB_LOGGING=${DB_LOGGING}
+#       - URL_API_OMIE=${URL_API_OMIE}
+#       - MODE=${MODE}
+#       - WEB_DOCUMENT_ROOT=/var/www/app
+#       - WEB_DOCUMENT_INDEX=index.php
+#       - XDEBUG_MODE=debug # ,profile,coverage ,develop,trace,gcstats
+#       - XDEBUG_IDE_KEY=XDEBUG_ECLIPSE
+#       - XDEBUG_CLIENT_HOST=host.docker.internal
+#       - XDEBUG_REMOTE_CONNECT_BACK=1
+#       - PHP_DATE_TIMEZONE=UTC
+#       - PHP_DISPLAY_ERRORS=1
+#       - PHP_MEMORY_LIMIT=2048M
+#       - PHP_MAX_EXECUTION_TIME=86400
+#       - PHP_POST_MAX_SIZE=500M
+#       - PHP_UPLOAD_MAX_FILESIZE=500M
+#     ports:
+#       - 80:80
+  database_es:
+    image: postgres
+    container_name: database_es
+    restart: always
+    ports:
+      - 5434:5432
+    # networks:
+    #   - internal
+    environment:
+      - POSTGRES_USER=user_report
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_DB=report_es
+    # volumes:
+    #   - pgdata:/data/postgres
+# Networks
+# networks:
+#   # Internal network
+#   internal:
+#     driver: bridge
+# volumes:
+#   pgdata:
+#     driver: local
