@@ -3,7 +3,7 @@ import { CreateCategoriasService } from '../services/CreateCategoriasService';
 
 export class CategoriasController {
 
-	async handdle( request: Request, response: Response ) : Promise<Categorias | Error> {
+	async handle( request: Request, response: Response ) : Promise<Categorias | Error> {
 		const { name, description } = request.body;
 
 		const service = new CreateCategoriasService();
