@@ -9,6 +9,10 @@ type CategoriasRequest = {
 export class CreateCategoriasService {
 
 	async execute( {name, description}: CategoriasRequest ) : Promise<Categorias | Error> {
+		if(	[name, description].includes(undefined) ){
+			return new Error('Faltam parametros.');
+		}
+
 		const repo = getRepository(Categorias);
 
 		const checar = await repo.findOne({name});
